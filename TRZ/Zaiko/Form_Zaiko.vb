@@ -322,7 +322,7 @@ Public Class Form_Zaiko
     sql &= "              LEFT JOIN KAKU ON CUTJ.KAKUC = KAKU.KKCODE)"
     sql &= "              LEFT JOIN TOKUISAKI ON CUTJ.TKCODE = TOKUISAKI.TKCODE) "
     sql &= "              LEFT JOIN EDAB ON CUTJ.KOTAINO = EDAB.KOTAINO "
-    sql &= "                             and CUTJ.EBCODE = EDAB.EDC "
+    sql &= "                             and CUTJ.EBCODE = EDAB.EBCODE "
     sql &= " WHERE   (CUTJ.NSZFLG <= 1 "
     sql &= "      AND CUTJ.DKUBUN = 0 "
     sql &= "      AND CUTJ.KYOKUFLG = 0 "
