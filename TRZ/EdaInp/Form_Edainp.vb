@@ -962,7 +962,7 @@ Public Class Form_Edainp
         Dim tmpEdaNo As Integer
         .GetResult(tmpDt, SqlSelMaxEdaban(targetDate))
         If tmpDt.Rows.Count = 0 Then
-          ret = 1
+          ret = 0
         ElseIf tmpDt.Rows.Count > 0 _
           AndAlso Integer.TryParse(tmpDt.Rows(0)("MAX_EDABAN").ToString(), tmpEdaNo) Then
           ret = tmpEdaNo
