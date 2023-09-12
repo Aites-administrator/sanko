@@ -514,11 +514,10 @@ Public Class Form_Edainp
     Dim targetYear As String
 
     ' 年度開始月
-    Const START_MONTH = "4"
+    Const START_MONTH = "5"
 
     targetYear = Year(DateAdd("m", (CInt(START_MONTH) - 1) * -1, targetDate))
     'EDABより仕入日基準の年度で最大の枝番を取得
-    '種別 = 1（和牛）,2（国産牛）,8（交雑種）
     sql = ""
     sql = sql & " SELECT MAX(EBCODE) as MAX_EDABAN "
     sql = sql & " FROM EDAB "
