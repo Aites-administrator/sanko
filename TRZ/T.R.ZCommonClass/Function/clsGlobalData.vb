@@ -97,7 +97,7 @@
   ''' <summary>
   ''' 枝番最大値
   ''' </summary>
-  Public Shared ReadOnly EDABAN_MAX As Integer = 9999
+  Public Shared ReadOnly EDABAN_MAX As Integer = 99999
 
   ''' <summary>
   ''' 枝番最小値

@@ -31,6 +31,7 @@ Public Class CmbMstSetType
       sql &= " SELECT SHCODE as ItemCode "
       sql &= "      , CONCAT(FORMAT(SHCODE,'" & CODE_FORMAT & "') , ':' , HINMEI) as ItemName "
       sql &= " FROM SHOHIN "
+      sql &= " WHERE 1=1 "
       If prmCode <> "" Then
         sql &= "  AND SHCODE = " & prmCode
       End If

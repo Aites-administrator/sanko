@@ -973,6 +973,8 @@ Public Class Form_OutConv
         ComSetDictionaryVal(tmpDicDst, "SIZE", " 左")
       Case PARTS_SIDE_RIGHT.ToString()
         ComSetDictionaryVal(tmpDicDst, "SIZE", " 右")
+      Case Else
+        ComSetDictionaryVal(tmpDicDst, "SIZE", " ")
     End Select
 
   End Sub

@@ -6,8 +6,8 @@
 #Region "コンストラクタ"
 
   Public Sub New()
-    ' 数値4桁のみ入力可
-    MyBase.New(4)
+    ' 数値5桁のみ入力可
+    MyBase.New(5)
     ' フォーカス時、表示メッセージ設定
     MyBase.SetMsgLabelText("枝番号を入力してください。")
   End Sub
