@@ -113,7 +113,6 @@ Public Class clsPcaDb
     Dim tmpTaxKind As String = String.Empty
 
     Try
-
       tmpProductData = GetProductData(TrzDataBase.GetProductCode(prmProductCode))  ' 商品情報取得
       tmpTaxKind = If(prmSiireKbn, tmpProductData("sms_kantaxkind"), tmpProductData("sms_kontaxkind"))
       If tmpProductData("smsp_tax").ToString().Trim() = "0" Then

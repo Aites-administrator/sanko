@@ -327,8 +327,8 @@ Public Class Form_OutConv
           ' 得意先が変更されたら税率を再取得
           If tmpTokuisakiC <> tmpDataRow("TOKUISAKIC").ToString() Then
             tmpTokuisakiC = tmpDataRow("TOKUISAKIC").ToString()
-            tmpZeiritsu = PcaDataBase.GetTaxRate(tmpTokuisakiC, tmpDataRow("SYOHINC").ToString())
-            tmpGenZeiritsu = PcaDataBase.GetTaxRate(tmpSiireCd, tmpDataRow("SYOHINC").ToString(), tmpSiireKbn)
+            tmpZeiritsu = PcaDataBase.GetTaxRate(tmpTokuisakiC, tmpDataRow("SYOHINC").ToString(), False, tmpDataRow("URIAGEBI").ToString)
+            tmpGenZeiritsu = PcaDataBase.GetTaxRate(tmpSiireCd, tmpDataRow("SYOHINC").ToString(), tmpSiireKbn, tmpDataRow("URIAGEBI").ToString)
           End If
 
           ' 明細を伝票に追加

@@ -269,13 +269,13 @@ Public Class Form_Zaiko
 
     With ret
       '.Add(New clsDataGridEditTextBox("タイトル", prmUpdateFnc:=AddressOf [更新時実行関数], prmValueType:=[データ型]))
-      .Add(New clsDataGridEditTextBox("ｾｯﾄC", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=2))
-      .Add(New clsDataGridEditTextBox("枝No.", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=4))
+      .Add(New clsDataGridEditTextBox("ｾｯﾄC", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=4))
+      .Add(New clsDataGridEditTextBox("枝No.", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=5))
       .Add(New clsDataGridEditTextBox("原単価", prmUpdateFnc:=AddressOf UpDateNoReload, prmValueType:=VT_SIGNED_NUMBER, prmIsReload:=False, prmMaxChar:=8))
       .Add(New clsDataGridEditTextBox("売単価", prmUpdateFnc:=AddressOf UpDateNoReload, prmValueType:=VT_SIGNED_NUMBER, prmIsReload:=False, prmMaxChar:=6))
       .Add(New clsDataGridEditTextBox("部位C", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=4))
       .Add(New clsDataGridEditTextBox("格付C", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=2))
-      .Add(New clsDataGridEditTextBox("原産地C", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=2))
+      .Add(New clsDataGridEditTextBox("原産地C", prmUpdateFnc:=AddressOf UpDateDb, prmValueType:=VT_NUMBER, prmMaxChar:=4))
 
     End With
 
