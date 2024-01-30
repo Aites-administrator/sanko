@@ -1360,7 +1360,7 @@ Public Class Form_NYUKO
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate">最終更新日時</param>
   ''' <param name="DataCount">データ件数</param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
 
     ' データグリッドの選択件数設定
     dataGridCount = DataCount

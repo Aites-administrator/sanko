@@ -847,7 +847,7 @@ Public Class Form_SYUKO
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate">最終更新日時</param>
   ''' <param name="DataCount">データ件数</param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Me.lblGridStat.Text = IIf(sender.Equals(DG2V1), "出庫明細  ", "在庫一覧  ") & "件数：" & DataCount.ToString()
   End Sub
 

@@ -864,7 +864,7 @@ Public Class Form_Zaiko
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate">最終更新日時</param>
   ''' <param name="DataCount">データ件数</param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
 
     Me.Label_GridData.AutoSize = False
     Me.Label_GridData.TextAlign = ContentAlignment.MiddleCenter
@@ -1012,6 +1012,9 @@ Public Class Form_Zaiko
     '出荷ボタン
     ButtonSyuka.Text = "F3：出荷"
 
+    ' 非表示 → 表示時処理設定
+    MyBase.lcCallBackShowFormLc = AddressOf ReStartPrg
+
     ' IPC通信起動
     InitIPC(PRG_ID)
 
@@ -1058,6 +1061,27 @@ Public Class Form_Zaiko
         Me.ButtonEnd.PerformClick()
     End Select
   End Sub
+
+  ''' <summary>
+  ''' 画面再表示時処理
+  ''' </summary>
+  ''' <remarks>
+  ''' 非表示→表示時に実行
+  ''' FormLoad時に設定
+  ''' </remarks>
+  Private Sub ReStartPrg()
+    ' 得意先のコンボボックスを更新
+    Me.CmbMstCustomer_01.InitCmb()
+    CmbMstCustomer_01.SelectedIndex = -1
+    ' 商品のコンボボックスを更新
+    CmbMstItem_01.InitCmb()
+    CmbMstItem_01.SelectedIndex = -1
+    ' セット区分のコンボボックスを更新
+    CmbMstSetType_01.InitCmb()
+    CmbMstSetType_01.SelectedIndex = -1
+
+  End Sub
+
 
 #Region "チェックボックス関連"
 
@@ -1343,6 +1367,15 @@ Public Class Form_Zaiko
     CheckBox_Sample01.Checked = False
     CheckBox_Sample02.Checked = False
     CheckBox_EdaBetu.Checked = False
+
+    ' 得意先のコンボボックスを更新
+    Me.CmbMstCustomer_01.InitCmb()
+    ' 商品のコンボボックスを更新
+    CmbMstItem_01.InitCmb()
+    CmbMstItem_01.SelectedIndex = -1
+    ' セット区分のコンボボックスを更新
+    CmbMstSetType_01.InitCmb()
+    CmbMstSetType_01.SelectedIndex = -1
 
     Me.CmbMstCustomer_01.Focus()
 

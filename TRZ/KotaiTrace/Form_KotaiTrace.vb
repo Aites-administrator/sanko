@@ -590,7 +590,7 @@ Public Class Form_KotaiTrace
   ''' <param name="prmLastUpdate">最終更新時刻</param>
   ''' <param name="prmRowCount">レコード件数</param>
   ''' <remarks>枝入力情報一覧再表示時に枝入力情報の表示を行う</remarks>
-  Private Sub ReloadData(sender As DataGridView, prmLastUpdate As String, prmRowCount As Long)
+  Private Sub ReloadData(sender As DataGridView, prmLastUpdate As String, prmRowCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
 
     _EdabRowPos = 0
 

@@ -1242,6 +1242,9 @@ Public Class Form_Shukei
     ' セット処理横計明細を初期値とする
     RadioButton1.Checked = True
 
+    ' 非表示 → 表示時処理設定
+    MyBase.lcCallBackShowFormLc = AddressOf ReStartPrg
+
     '集計用ワークテーブルの初回定義
     Dim tmpKeyVal As Dictionary(Of String, String) = TargetValNewShukeiVal()
     For Each tmpKey As String In tmpKeyVal.Keys
@@ -1249,6 +1252,28 @@ Public Class Form_Shukei
     Next
 
   End Sub
+
+  ''' <summary>
+  ''' 画面再表示時処理
+  ''' </summary>
+  ''' <remarks>
+  ''' 非表示→表示時に実行
+  ''' FormLoad時に設定
+  ''' </remarks>
+  Private Sub ReStartPrg()
+    ' 得意先のコンボボックスを更新
+    Me.CmbMstCustomer_01.InitCmb()
+    CmbMstCustomer_01.SelectedIndex = -1
+    ' 商品のコンボボックスを更新
+    CmbMstItem_01.InitCmb()
+    CmbMstItem_01.SelectedIndex = -1
+    ' セット区分のコンボボックスを更新
+    CmbDateProcessing_01.InitCmb()
+    CmbDateProcessing_01.SelectedIndex = 0
+    CmbDateProcessing_02.InitCmb()
+    CmbDateProcessing_02.SelectedIndex = 0
+  End Sub
+
 
   ''' <summary>
   ''' ファンクションキー操作

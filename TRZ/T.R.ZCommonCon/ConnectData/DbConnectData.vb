@@ -3,26 +3,28 @@
   ''' <summary>
   ''' SQL SERVER接続先
   ''' </summary>
+  Public Shared ReadOnly DB_DATASOURCE As String = "211.211.1.58\trasa"
   'Public Shared ReadOnly DB_DATASOURCE As String = "pca-pc2023\trasa"
-  'Public Shared ReadOnly DB_DEFAULTDATABASE As String = "TRASA"
-  'Public Shared ReadOnly DB_USERID As String = "sa"
-  'Public Shared ReadOnly DB_PASSWORD As String = "Aites495344!"
-  Public Shared ReadOnly DB_DATASOURCE As String = "211.211.1.80\trasa"
   Public Shared ReadOnly DB_DEFAULTDATABASE As String = "TRASA"
   Public Shared ReadOnly DB_USERID As String = "sa"
   Public Shared ReadOnly DB_PASSWORD As String = "Aites495344!"
+  'Public Shared ReadOnly DB_DATASOURCE As String = "localhost\trasa"
+  'Public Shared ReadOnly DB_DEFAULTDATABASE As String = "TRASA"
+  'Public Shared ReadOnly DB_USERID As String = "sa"
+  'Public Shared ReadOnly DB_PASSWORD As String = "Aites495344!"
 
   ''' <summary>
   ''' PCA SERVER接続先
   ''' </summary>
+  Public Shared ReadOnly PCA_DATASOURCE As String = "211.211.1.58\PCADB"
   'Public Shared ReadOnly PCA_DATASOURCE As String = "pca-pc2023\PCADB"
-  'Public Shared ReadOnly PCA_DEFAULTDATABASE As String = "P20V01C001KON0002"
-  'Public Shared ReadOnly PCA_USERID As String = "sa"
-  'Public Shared ReadOnly PCA_PASSWORD As String = "Aites495344!"
-  Public Shared ReadOnly PCA_DATASOURCE As String = "211.211.1.80\PCADB"
-  Public Shared ReadOnly PCA_DEFAULTDATABASE As String = "P20V01C001KON0018"
+  Public Shared ReadOnly PCA_DEFAULTDATABASE As String = "P20V01C001KON0002"
   Public Shared ReadOnly PCA_USERID As String = "sa"
   Public Shared ReadOnly PCA_PASSWORD As String = "Aites495344!"
+  'Public Shared ReadOnly PCA_DATASOURCE As String = "localhost\PCADB"
+  'Public Shared ReadOnly PCA_DEFAULTDATABASE As String = "P20V01C001KON0018"
+  'Public Shared ReadOnly PCA_USERID As String = "sa"
+  'Public Shared ReadOnly PCA_PASSWORD As String = "Aites495344!"
 
   ''' <summary>
   ''' PCA API接続先

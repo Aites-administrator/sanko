@@ -5,6 +5,12 @@
 
 #Region "プライベート"
   Private WithEvents mCmb As ComboBox
+
+  ''' <summary>
+  ''' 最終入力テキスト
+  ''' </summary>
+  Private _LastText As String
+
 #End Region
 
 #End Region
@@ -29,9 +35,14 @@
 
 #Region "プライベート"
   Private Sub TextChanged(sender As Object, e As EventArgs) Handles mCmb.Validated, mCmb.SelectedIndexChanged
+    Dim tmpValue As String = DirectCast(sender, ComboBox).Text
 
     If mCallBack IsNot Nothing Then
-      mCallBack()
+      If _LastText <> tmpValue Then
+        ' 最終入力テキスト更新
+        _LastText = tmpValue
+        mCallBack()
+      End If
     End If
   End Sub
 #End Region

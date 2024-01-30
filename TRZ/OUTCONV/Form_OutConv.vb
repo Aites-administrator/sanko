@@ -21,6 +21,13 @@ Public Class Form_OutConv
 #End Region
 #End Region
 
+#Region "変数定義"
+#Region "プライベート"
+  Private _DeliveryDate As String = Nothing
+#End Region
+#End Region
+
+
 #Region "スタートアップ"
   <STAThread>
   Shared Sub main()
@@ -1889,7 +1896,7 @@ Public Class Form_OutConv
 
     ' 出荷日のコンボボックスを先頭に設定
     Me.CmbDateProcessing1.SelectedIndex = 0
-
+    _DeliveryDate = CmbDateProcessing1.SelectedValue.ToString
     ' 画面初期化
     Call InitForm02()
 
@@ -1971,6 +1978,11 @@ Public Class Form_OutConv
       .SelectedIndex = 0
     End With
 
+    With Me.CmbMstCustomer1
+      .InitCmb()
+      .SelectedIndex = -1
+    End With
+
     Controlz(DG2V1.Name).ShowList()
     Controlz(DG2V2.Name).ShowList()
 
@@ -1992,26 +2004,29 @@ Public Class Form_OutConv
     Static SrcSqlCunstomerList As String
     Static SrcSqlItemDetailList As String
 
-    ' 得意先一覧再表示
-    If SrcSqlCunstomerList <> CreateGrid2Src1() Then
-      SrcSqlCunstomerList = CreateGrid2Src1()
-      With Controlz(Me.DG2V1.Name)
-        .ClearSelectedList()
-        .AutoSearch = True
-        .SrcSql = SrcSqlCunstomerList
-        .AutoSearch = False
-      End With
-    End If
+    If (_DeliveryDate <> Me.CmbDateProcessing1.SelectedValue.ToString()) Then
+      _DeliveryDate = Me.CmbDateProcessing1.SelectedValue.ToString()
+      ' 得意先一覧再表示
+      If SrcSqlCunstomerList <> CreateGrid2Src1() Then
+        SrcSqlCunstomerList = CreateGrid2Src1()
+        With Controlz(Me.DG2V1.Name)
+          .ClearSelectedList()
+          .AutoSearch = True
+          .SrcSql = SrcSqlCunstomerList
+          .AutoSearch = False
+        End With
+      End If
 
-    ' 出荷明細一覧再表示
-    If SrcSqlItemDetailList <> CreateGrid2Src2() Then
-      SrcSqlItemDetailList = CreateGrid2Src2()
-      With Controlz(Me.DG2V2.Name)
-        .ClearSelectedList()
-        .AutoSearch = True
-        .SrcSql = SrcSqlItemDetailList
-        .AutoSearch = False
-      End With
+      ' 出荷明細一覧再表示
+      If SrcSqlItemDetailList <> CreateGrid2Src2() Then
+        SrcSqlItemDetailList = CreateGrid2Src2()
+        With Controlz(Me.DG2V2.Name)
+          .ClearSelectedList()
+          .AutoSearch = True
+          .SrcSql = SrcSqlItemDetailList
+          .AutoSearch = False
+        End With
+      End If
     End If
 
   End Sub
@@ -2054,7 +2069,7 @@ Public Class Form_OutConv
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate"></param>
   ''' <param name="DataCount"></param>
-  Private Sub ReLoadDataCustomerList(sender As DataGridView, LastUpdate As Date, DataCount As Long)
+  Private Sub ReLoadDataCustomerList(sender As DataGridView, LastUpdate As Date, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Me.lblCustomerListStat.Text = LastUpdate.ToString("yyyy/MM/dd  HH:mm:ss ") & "現在 " & DataCount & "件"
   End Sub
 
@@ -2064,7 +2079,7 @@ Public Class Form_OutConv
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate"></param>
   ''' <param name="DataCount"></param>
-  Private Sub ReLoadDataItemDetail(sender As DataGridView, LastUpdate As Date, DataCount As Long)
+  Private Sub ReLoadDataItemDetail(sender As DataGridView, LastUpdate As Date, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Me.lblItemDetailListStat.Text = LastUpdate.ToString("yyyy/MM/dd  HH:mm:ss ") & "現在 " & DataCount & "件"
 
     Try

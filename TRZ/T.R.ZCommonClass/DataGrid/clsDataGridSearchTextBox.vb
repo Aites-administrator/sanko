@@ -5,6 +5,12 @@
 
 #Region "プライベート"
   Private WithEvents mTxt As TextBox
+
+  ''' <summary>
+  ''' 最終入力テキスト
+  ''' </summary>
+  Private _LastText As String
+
 #End Region
 
 #End Region
@@ -29,8 +35,14 @@
 
 #Region "プライベート"
   Private Sub Validated(sender As Object, e As EventArgs) Handles mTxt.Validated
+    Dim tmpValue As String = DirectCast(sender, TextBox).Text
+
     If mCallBack IsNot Nothing Then
-      mCallBack()
+      If _LastText <> tmpValue Then
+        ' 最終入力テキスト更新
+        _LastText = tmpValue
+        mCallBack()
+      End If
     End If
   End Sub
 #End Region

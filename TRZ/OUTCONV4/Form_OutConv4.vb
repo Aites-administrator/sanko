@@ -1099,7 +1099,7 @@ Public Class Form_OutConv4
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate"></param>
   ''' <param name="DataCount"></param>
-  Private Sub ReLoadDataSupplierList(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub ReLoadDataSupplierList(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Me.lblSupplierListStat.Text = LastUpdate & "   現在 " & DataCount & "件"
 
   End Sub
@@ -1110,7 +1110,7 @@ Public Class Form_OutConv4
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate"></param>
   ''' <param name="DataCount"></param>
-  Private Sub ReLoadDataItemDetail(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub ReLoadDataItemDetail(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Me.lblItemDetailListStat.Text = LastUpdate & "   現在 " & DataCount & "件"
 
     Try

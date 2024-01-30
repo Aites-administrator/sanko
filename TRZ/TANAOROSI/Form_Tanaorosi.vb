@@ -940,7 +940,7 @@ Public Class Form_Tanaorosi
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate"></param>
   ''' <param name="DataCount"></param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
     Dim tmpCountTxt As String = String.Empty
 
     If IsShowUntreated() Then

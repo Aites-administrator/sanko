@@ -169,7 +169,7 @@ Public Class clsDataGrid
   Public lcCallBackCellDoubleClick As CallBackCellDoubleClick
 
   ' データ表示イベント
-  Delegate Sub CallBackReLoadData(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Delegate Sub CallBackReLoadData(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
   Public lcCallBackReLoadData As CallBackReLoadData
 
   ' ユーザー操作によるデータグリッド編集エラー発生時イベント
@@ -352,6 +352,39 @@ Public Class clsDataGrid
   Public ReadOnly Property DataCount() As Long
     Get
       Return _DataGridView.Rows.Count
+    End Get
+  End Property
+
+  ''' <summary>
+  ''' 重量合計取得
+  ''' </summary>
+  ''' <returns>データ行数</returns>
+  Public ReadOnly Property DataJuryo() As Decimal
+    Get
+      Dim JuryoSum As Decimal = 0
+      If _DataGridView.Columns.Contains("JYURYOK") Then
+        For Each DataRow As DataGridViewRow In _DataGridView.Rows
+          JuryoSum += CDec(DataRow.Cells(_DataGridView.Columns("JYURYOK").Index).Value)
+        Next
+
+      End If
+      Return Math.Round(JuryoSum, 1)
+    End Get
+  End Property
+
+  ''' <summary>
+  ''' 重量合計取得
+  ''' </summary>
+  ''' <returns>データ行数</returns>
+  Public ReadOnly Property DataKingaku() As Decimal
+    Get
+      Dim KingakuSum As Decimal = 0
+      If _DataGridView.Columns.Contains("KINGAKUW") Then
+        For Each DataRow As DataGridViewRow In _DataGridView.Rows
+          KingakuSum += CDec(DataRow.Cells(_DataGridView.Columns("KINGAKUW").Index).Value)
+        Next
+      End If
+      Return Math.Round(KingakuSum)
     End Get
   End Property
 
@@ -903,7 +936,7 @@ Public Class clsDataGrid
     End If
 
     If lcCallBackReLoadData IsNot Nothing Then
-      Call lcCallBackReLoadData(_DataGridView, LastUpdate, DataCount)
+      Call lcCallBackReLoadData(_DataGridView, LastUpdate, DataCount, DataJuryo, DataKingaku)
     End If
 
   End Sub
@@ -994,7 +1027,7 @@ Public Class clsDataGrid
     End If
 
     If lcCallBackReLoadData IsNot Nothing Then
-      Call lcCallBackReLoadData(_DataGridView, LastUpdate, DataCount)
+      Call lcCallBackReLoadData(_DataGridView, LastUpdate, DataCount, DataJuryo, DataKingaku)
     End If
 
   End Sub

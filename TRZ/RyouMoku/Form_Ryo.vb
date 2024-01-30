@@ -137,17 +137,22 @@ Public Class Form_Ryo
   ''' </summary>
   ''' <param name="printPreview">プレビューフラグ</param>
   ''' <param name="strReportName">レポートファイル名</param>
+  ''' <param name="prmWaitFlag">待機フラグ</param>
   ''' <returns>
   ''' True :ファイルオープン成功
   ''' False:ファイルオープン失敗
   ''' </returns>
-  Public Shared Function RyoAccessRun(printPreview As Integer, strReportName As String) As Boolean
+  Public Shared Function RyoAccessRun(printPreview As Integer, strReportName As String, Optional prmWaitFlag As Boolean = False) As Boolean
     Try
 
       ' Threadオブジェクトを作成する
       Dim MultiProgram_run = New System.Threading.Thread(AddressOf DoRyoSomething01)
       ' １つ目のスレッドを開始する
       MultiProgram_run.Start(New prmReport(printPreview.ToString, strReportName))
+
+      If (prmWaitFlag) Then
+        MultiProgram_run.Join()
+      End If
 
     Catch ex As Exception
       Call ComWriteErrLog(ex)
@@ -1068,6 +1073,17 @@ Public Class Form_Ryo
   ''' </summary>
   Public Sub Report_Prn()
 
+    ' 単品レコード印刷対象有りの場合
+    If TBL_TCNT <> 0 Then
+
+      ' 量目表（単品）を表示
+      '  （単品量目表）
+      updateReportRyoMoku()
+      RyoAccessRun(clsGlobalData.PRINT_PREVIEW, "R_RYO", True)
+
+    End If
+
+
     ' セットレコード印刷対象有りの場合
     If TBL_SCNT <> 0 Then
 
@@ -1075,16 +1091,6 @@ Public Class Form_Ryo
       '   （セット量目表）
       updateReportRyoMokuSet()
       RyoAccessRun02(clsGlobalData.PRINT_PREVIEW, "R_RYOSET")
-
-    End If
-
-    ' 単品レコード印刷対象有りの場合
-    If TBL_TCNT <> 0 Then
-
-      ' 量目表（単品）を表示
-      '  （単品量目表）
-      updateReportRyoMoku()
-      RyoAccessRun(clsGlobalData.PRINT_PREVIEW, "R_RYO")
 
     End If
 
@@ -1114,7 +1120,7 @@ Public Class Form_Ryo
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate">最終更新日時</param>
   ''' <param name="DataCount">データ件数</param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
 
     ' データグリッドの選択件数設定
     dataGridCount = DataCount
@@ -1792,6 +1798,8 @@ Public Class Form_Ryo
   ''' </remarks>
   Private Sub ReStartPrg()
     Me.CmbDateShukaBi_01.InitCmb()
+    ' 得意先名のコンボボックスを更新
+    CmbMstCustomer_01.InitCmb()
   End Sub
 #End Region
 

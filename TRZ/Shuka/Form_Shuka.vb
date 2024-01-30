@@ -827,13 +827,13 @@ Public Class Form_Shuka
   ''' <param name="sender"></param>
   ''' <param name="LastUpdate">最終更新日時</param>
   ''' <param name="DataCount">データ件数</param>
-  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long)
+  Private Sub DgvReload(sender As DataGridView, LastUpdate As String, DataCount As Long, DataJuryo As Decimal, DataKingaku As Decimal)
 
     Me.Label_GridData.AutoSize = False
     Me.Label_GridData.TextAlign = ContentAlignment.MiddleCenter
     '文字列をDateTime値に変換する
     Dim dt As DateTime = DateTime.Parse(LastUpdate)
-    Me.Label_GridData.Text = dt.ToString("yyyy年M月d日HH：mm") & " 現在 " & Space(6) & " 出 荷 一 覧 " & Space(6) & DataCount.ToString() & "件"
+    Me.Label_GridData.Text = dt.ToString("yyyy年M月d日HH：mm") & " 現在 " & Space(6) & " 出 荷 一 覧 " & Space(6) & DataCount.ToString() & "件" & Space(2) & DataJuryo.ToString() & "kg" & Space(2) & DataKingaku.ToString() & "円"
 
   End Sub
 #End Region
@@ -897,6 +897,9 @@ Public Class Form_Shuka
     '修正ボタン
     ButtonUpdate.Text = "F1：修正"
 
+    ' 非表示 → 表示時処理設定
+    MyBase.lcCallBackShowFormLc = AddressOf ReStartPrg
+
     ' IPC通信起動
     InitIPC(PRG_ID)
 
@@ -935,6 +938,22 @@ Public Class Form_Shuka
         Me.ButtonEnd.Focus()
         Me.ButtonEnd.PerformClick()
     End Select
+  End Sub
+
+  ''' <summary>
+  ''' 画面再表示時処理
+  ''' </summary>
+  ''' <remarks>
+  ''' 非表示→表示時に実行
+  ''' FormLoad時に設定
+  ''' </remarks>
+  Private Sub ReStartPrg()
+    ' 出荷日のコンボボックスを更新
+    CmbDateProcessing_01.InitCmb()
+
+    ' 出荷日のコンボボックスを先頭に設定
+    CmbDateProcessing_01.SelectedIndex = 0
+
   End Sub
 
 #End Region
@@ -1424,18 +1443,21 @@ Public Class Form_Shuka
                                                                         , CmbDateProcessing_01.SelectedIndexChanged
     If DG2V1 IsNot Nothing AndAlso DG2V2 IsNot Nothing Then
 
-      If Me.CmbDateProcessing_01.SelectedValue Is Nothing Then
-        ' 出荷日未選択時は出荷日の過去7か月を抽出対象
-        Me.txtSyukkabiFrom.Text = Date.Parse(ComGetProcDate()).AddMonths(-7).ToString("yyyy/MM/dd")
-        Me.txtSyukkabi.Text = ""
-      Else
-        ' 出荷日選択時は選択された出荷日を抽出対象
-        Me.txtSyukkabi.Text = Me.CmbDateProcessing_01.Text
-        Me.txtSyukkabiFrom.Text = ""
-      End If
+      If Me.txtSyukkabi.Text <> Me.CmbDateProcessing_01.Text Then
 
-      ' 検索処理実行
-      Controlz(GetDataGridName()).ShowList()
+        If Me.CmbDateProcessing_01.SelectedValue Is Nothing Then
+          ' 出荷日未選択時は出荷日の過去7か月を抽出対象
+          Me.txtSyukkabiFrom.Text = Date.Parse(ComGetProcDate()).AddMonths(-7).ToString("yyyy/MM/dd")
+          Me.txtSyukkabi.Text = ""
+        Else
+          ' 出荷日選択時は選択された出荷日を抽出対象
+          Me.txtSyukkabi.Text = Me.CmbDateProcessing_01.Text
+          Me.txtSyukkabiFrom.Text = ""
+        End If
+
+        ' 検索処理実行
+        Controlz(GetDataGridName()).ShowList()
+      End If
     End If
   End Sub
 
