@@ -1797,9 +1797,16 @@ Public Class Form_Ryo
   ''' FormLoad時に設定
   ''' </remarks>
   Private Sub ReStartPrg()
+    ' 出荷日のコンボボックスを更新
     Me.CmbDateShukaBi_01.InitCmb()
+    ' 出荷日のコンボボックスを先頭に設定
+    CmbDateShukaBi_01.SelectedIndex = 0
+
     ' 得意先名のコンボボックスを更新
     CmbMstCustomer_01.InitCmb()
+    ' 得意先名のコンボボックスを先頭に設定
+    CmbMstCustomer_01.SelectedIndex = -1
+
   End Sub
 #End Region
 

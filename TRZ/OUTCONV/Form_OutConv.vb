@@ -2006,27 +2006,28 @@ Public Class Form_OutConv
 
     If (_DeliveryDate <> Me.CmbDateProcessing1.SelectedValue.ToString()) Then
       _DeliveryDate = Me.CmbDateProcessing1.SelectedValue.ToString()
-      ' 得意先一覧再表示
-      If SrcSqlCunstomerList <> CreateGrid2Src1() Then
-        SrcSqlCunstomerList = CreateGrid2Src1()
-        With Controlz(Me.DG2V1.Name)
-          .ClearSelectedList()
-          .AutoSearch = True
-          .SrcSql = SrcSqlCunstomerList
-          .AutoSearch = False
-        End With
-      End If
+    End If
 
-      ' 出荷明細一覧再表示
-      If SrcSqlItemDetailList <> CreateGrid2Src2() Then
-        SrcSqlItemDetailList = CreateGrid2Src2()
-        With Controlz(Me.DG2V2.Name)
-          .ClearSelectedList()
-          .AutoSearch = True
-          .SrcSql = SrcSqlItemDetailList
-          .AutoSearch = False
-        End With
-      End If
+    ' 得意先一覧再表示
+    If SrcSqlCunstomerList <> CreateGrid2Src1() Then
+      SrcSqlCunstomerList = CreateGrid2Src1()
+      With Controlz(Me.DG2V1.Name)
+        .ClearSelectedList()
+        .AutoSearch = True
+        .SrcSql = SrcSqlCunstomerList
+        .AutoSearch = False
+      End With
+    End If
+
+    ' 出荷明細一覧再表示
+    If SrcSqlItemDetailList <> CreateGrid2Src2() Then
+      SrcSqlItemDetailList = CreateGrid2Src2()
+      With Controlz(Me.DG2V2.Name)
+        .ClearSelectedList()
+        .AutoSearch = True
+        .SrcSql = SrcSqlItemDetailList
+        .AutoSearch = False
+      End With
     End If
 
   End Sub

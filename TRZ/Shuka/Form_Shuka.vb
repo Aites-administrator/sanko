@@ -954,6 +954,17 @@ Public Class Form_Shuka
     ' 出荷日のコンボボックスを先頭に設定
     CmbDateProcessing_01.SelectedIndex = 0
 
+    ' 得意先のコンボボックスを更新
+    CmbMstCustomer_01.InitCmb()
+
+    ' 得意先のコンボボックスを先頭に設定
+    CmbMstCustomer_01.SelectedIndex = -1
+
+    ' 商品のコンボボックスを更新
+    CmbMstItem_01.InitCmb()
+
+    ' 商品のコンボボックスを先頭に設定
+    CmbMstItem_01.SelectedIndex = -1
   End Sub
 
 #End Region
@@ -1265,6 +1276,18 @@ Public Class Form_Shuka
     ' 出荷日のコンボボックスを先頭に設定
     CmbDateProcessing_01.SelectedIndex = 0
     Me.TxtEdaban_01.Focus()
+
+    ' 得意先のコンボボックスを更新
+    CmbMstCustomer_01.InitCmb()
+
+    ' 得意先のコンボボックスを先頭に設定
+    CmbMstCustomer_01.SelectedIndex = -1
+
+    ' 商品のコンボボックスを更新
+    CmbMstItem_01.InitCmb()
+
+    ' 商品のコンボボックスを先頭に設定
+    CmbMstItem_01.SelectedIndex = -1
 
     Controlz(DG2V1.Name).AutoSearch = True
     DG2V1.Visible = True

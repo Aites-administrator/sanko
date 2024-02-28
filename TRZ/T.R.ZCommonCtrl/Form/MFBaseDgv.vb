@@ -79,6 +79,21 @@ Public Class MFBaseDgv
     Controlz = New Dictionary(Of String, clsDataGrid)
   End Sub
 
+  ''' <summary>
+  ''' キー押下時
+  ''' </summary>
+  ''' <param name="sender"></param>
+  ''' <param name="e"></param>
+  Private Sub BaseForm_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
+    'Control+Rの時再表示を行う
+    If (e.Modifiers And Keys.Control) = Keys.Control And e.KeyCode = Keys.R Then
+      For Each tmpDataGrid As clsDataGrid In Controlz.Values
+        tmpDataGrid.ShowList()
+      Next
+    End If
+  End Sub
+
+
 #End Region
 
 End Class
