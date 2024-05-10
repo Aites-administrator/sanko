@@ -74,6 +74,25 @@
     <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>T.R.ZCommonCtrl.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>T.R.ZCommonCtrl.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -126,6 +145,9 @@
     <Compile Include="ComboBox\CmbDateBase.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ComboBox\CmbDateKakouBiOutCsv.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComboBox\CmbDateShiirebi.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -148,6 +170,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\CmbMstCattle.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\CmbCustomerSelect.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\CmbMstCustomer.vb">

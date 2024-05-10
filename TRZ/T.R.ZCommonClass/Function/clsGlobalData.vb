@@ -102,7 +102,7 @@
   ''' <summary>
   ''' 枝番最小値
   ''' </summary>
-  Public Shared ReadOnly EDABAN_MIN As Integer = 1
+  Public Shared ReadOnly EDABAN_MIN As Integer = 10001
 
   ''' <summary>
   ''' 自社電話番号・ＦＡＸ

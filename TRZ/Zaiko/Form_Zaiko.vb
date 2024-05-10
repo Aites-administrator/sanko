@@ -1368,6 +1368,8 @@ Public Class Form_Zaiko
     CheckBox_Sample02.Checked = False
     CheckBox_EdaBetu.Checked = False
 
+    CheckBoxSetDate()
+
     ' 得意先のコンボボックスを更新
     Me.CmbMstCustomer_01.InitCmb()
     ' 商品のコンボボックスを更新
@@ -1378,6 +1380,7 @@ Public Class Form_Zaiko
     CmbMstSetType_01.SelectedIndex = -1
 
     Me.CmbMstCustomer_01.Focus()
+
 
     ' 単品表示に更新
     Call CheckBoxEdaBetuReload()

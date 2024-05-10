@@ -37,7 +37,6 @@ Public Class CmbDateShukaBi
     sql &= " WHERE NSZFLG = 2 "
     sql &= "   AND DKUBUN = 0 "
     sql &= "   AND SYUKKABI >= '" & DateAdd(DateInterval.Month, -7, dt).ToString("yyyy/MM/dd") & "'"
-
     sql &= " GROUP BY Format(SYUKKABI,'" & CODE_FORMAT & "') "
     sql &= " ORDER BY Format(SYUKKABI,'" & CODE_FORMAT & "') DESC"
 

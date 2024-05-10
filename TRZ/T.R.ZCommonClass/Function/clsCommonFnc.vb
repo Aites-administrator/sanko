@@ -928,6 +928,7 @@ Err_Exit:
                      & ":Exe:" & tmpExeFileName _
                      & "：Source：" & ex.Source _
                      & "：Method：" & ex.TargetSite.Name _
+                     & "：StackTrace ：" & ex.StackTrace _
                      & "：Description：" & ex.Message, filePath)
   End Sub
 
