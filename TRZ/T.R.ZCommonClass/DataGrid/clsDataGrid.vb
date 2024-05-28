@@ -1094,6 +1094,15 @@ Public Class clsDataGrid
 
   End Sub
 
+  Public Sub ClearSearchCondition(Optional prmExclusionControls As List(Of Control) = Nothing)
+    For Each tmpSc In _SearchConditionz
+      If prmExclusionControls Is Nothing _
+          OrElse prmExclusionControls.Contains(tmpSc.TargetControl) = False Then
+        tmpSc.ClearLastText()
+      End If
+    Next
+  End Sub
+
   ''' <summary>
   ''' 表示中データ全件取得
   ''' </summary>

@@ -46,6 +46,8 @@ Public Class clsDataGridSearchControl
   Delegate Sub CallBackSetTargetControl()
   Public lcCallBackSetTargetControl As CallBackSetTargetControl
 
+  Protected _LastText As String
+
 #End Region
 
 #End Region
@@ -117,6 +119,12 @@ Public Class clsDataGridSearchControl
     If ret Is Nothing Then ret = String.Empty
     Return ret
   End Function
+
+  Public Sub ClearLastText()
+    Me._LastText = Nothing
+  End Sub
+
+
 #End Region
 
 #End Region

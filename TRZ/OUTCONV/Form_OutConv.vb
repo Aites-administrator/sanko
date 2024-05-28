@@ -2115,6 +2115,10 @@ Public Class Form_OutConv
                               , typMsgBoxButton.BUTTON_YESNO) Then
         tmpDbCutJ.TrnStart()
 
+        If Controlz(DG2V2.Name).SelectCount = 0 Then
+          Throw New Exception("変換対象が選択されていません。")
+        End If
+
         ' PCA売上伝票作成
         Call DataPost(tmpDbCutJ, tmpDbUriage)
 

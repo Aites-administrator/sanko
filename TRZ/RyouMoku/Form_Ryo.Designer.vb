@@ -29,6 +29,7 @@ Partial Class Form_Ryo
     Me.CmbMstCustomer_01 = New T.R.ZCommonCtrl.CmbMstCustomer()
     Me.CmbDateShukaBi_01 = New T.R.ZCommonCtrl.CmbDateShukaBi()
     Me.Label_Title_Tokuisaki_01 = New System.Windows.Forms.Label()
+    Me.ButtonReflesh = New T.R.ZCommonCtrl.ButtonReflesh()
     Me.Label_GridData = New System.Windows.Forms.Label()
     Me.DataGridView1 = New System.Windows.Forms.DataGridView()
     Me.ButtonEnd = New T.R.ZCommonCtrl.ButtonEnd()
@@ -49,7 +50,7 @@ Partial Class Form_Ryo
     Me.GroupBox1.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 14.26415!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
     Me.GroupBox1.Location = New System.Drawing.Point(5, 1)
     Me.GroupBox1.Name = "GroupBox1"
-    Me.GroupBox1.Size = New System.Drawing.Size(1318, 126)
+    Me.GroupBox1.Size = New System.Drawing.Size(1217, 126)
     Me.GroupBox1.TabIndex = 0
     Me.GroupBox1.TabStop = False
     Me.GroupBox1.Text = "抽出条件（空白時はALL）"
@@ -60,7 +61,7 @@ Partial Class Form_Ryo
     Me.CHK_P.Font = New System.Drawing.Font("ＭＳ Ｐゴシック", 14.26415!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
     Me.CHK_P.Location = New System.Drawing.Point(686, 40)
     Me.CHK_P.Name = "CHK_P"
-    Me.CHK_P.Size = New System.Drawing.Size(139, 25)
+    Me.CHK_P.Size = New System.Drawing.Size(133, 24)
     Me.CHK_P.TabIndex = 5
     Me.CHK_P.Text = "未発行のみ"
     Me.CHK_P.UseVisualStyleBackColor = True
@@ -72,7 +73,7 @@ Partial Class Form_Ryo
     Me.Label1.ForeColor = System.Drawing.Color.White
     Me.Label1.Location = New System.Drawing.Point(200, 40)
     Me.Label1.Name = "Label1"
-    Me.Label1.Size = New System.Drawing.Size(98, 21)
+    Me.Label1.Size = New System.Drawing.Size(89, 19)
     Me.Label1.TabIndex = 4
     Me.Label1.Text = "得意先名"
     '
@@ -83,7 +84,7 @@ Partial Class Form_Ryo
     Me.CmbMstCustomer_01.FormattingEnabled = True
     Me.CmbMstCustomer_01.Location = New System.Drawing.Point(199, 70)
     Me.CmbMstCustomer_01.Name = "CmbMstCustomer_01"
-    Me.CmbMstCustomer_01.Size = New System.Drawing.Size(729, 29)
+    Me.CmbMstCustomer_01.Size = New System.Drawing.Size(729, 27)
     Me.CmbMstCustomer_01.TabIndex = 3
     Me.CmbMstCustomer_01.ValueMember = "ItemCode"
     '
@@ -94,7 +95,7 @@ Partial Class Form_Ryo
     Me.CmbDateShukaBi_01.FormattingEnabled = True
     Me.CmbDateShukaBi_01.Location = New System.Drawing.Point(19, 70)
     Me.CmbDateShukaBi_01.Name = "CmbDateShukaBi_01"
-    Me.CmbDateShukaBi_01.Size = New System.Drawing.Size(169, 29)
+    Me.CmbDateShukaBi_01.Size = New System.Drawing.Size(169, 27)
     Me.CmbDateShukaBi_01.TabIndex = 2
     Me.CmbDateShukaBi_01.ValueMember = "ItemCode"
     '
@@ -105,9 +106,21 @@ Partial Class Form_Ryo
     Me.Label_Title_Tokuisaki_01.ForeColor = System.Drawing.Color.White
     Me.Label_Title_Tokuisaki_01.Location = New System.Drawing.Point(25, 40)
     Me.Label_Title_Tokuisaki_01.Name = "Label_Title_Tokuisaki_01"
-    Me.Label_Title_Tokuisaki_01.Size = New System.Drawing.Size(76, 21)
+    Me.Label_Title_Tokuisaki_01.Size = New System.Drawing.Size(69, 19)
     Me.Label_Title_Tokuisaki_01.TabIndex = 0
     Me.Label_Title_Tokuisaki_01.Text = "出荷日"
+    '
+    'ButtonReflesh
+    '
+    Me.ButtonReflesh.Font = New System.Drawing.Font("MS UI Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+    Me.ButtonReflesh.Image = CType(resources.GetObject("ButtonReflesh.Image"), System.Drawing.Image)
+    Me.ButtonReflesh.Location = New System.Drawing.Point(1228, 6)
+    Me.ButtonReflesh.Name = "ButtonReflesh"
+    Me.ButtonReflesh.Size = New System.Drawing.Size(100, 120)
+    Me.ButtonReflesh.TabIndex = 6
+    Me.ButtonReflesh.Text = "再読込"
+    Me.ButtonReflesh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+    Me.ButtonReflesh.UseVisualStyleBackColor = True
     '
     'Label_GridData
     '
@@ -168,8 +181,9 @@ Partial Class Form_Ryo
     '
     'Form_Ryo
     '
-    Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 21.0!)
+    Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 19.0!)
     Me.ClientSize = New System.Drawing.Size(1534, 909)
+    Me.Controls.Add(Me.ButtonReflesh)
     Me.Controls.Add(Me.ButtonPrint)
     Me.Controls.Add(Me.ButtonEnd)
     Me.Controls.Add(Me.Label_GridData)
@@ -198,4 +212,5 @@ Partial Class Form_Ryo
   Friend WithEvents CmbMstCustomer_01 As T.R.ZCommonCtrl.CmbMstCustomer
   Friend WithEvents CHK_P As CheckBox
   Friend WithEvents Label1 As Label
+  Friend WithEvents ButtonReflesh As T.R.ZCommonCtrl.ButtonReflesh
 End Class

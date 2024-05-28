@@ -1527,6 +1527,8 @@ Public Class Form_Ryo
     ButtonEnd.Text = "F12：終了"
     ' 印刷ボタン
     ButtonPrint.Text = "F9：印刷"
+    ' 再読込ボタン
+    ButtonReflesh.Text = "F5：再読込"
 
     ' 終了ボタン
     ButtonEnd.CausesValidation = False
@@ -1557,6 +1559,11 @@ Public Class Form_Ryo
   ''' <param name="e"></param>
   Private Sub Form_Ryo_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
     Select Case e.KeyCode
+      ' F5キー押下時
+      Case Keys.F5
+        Me.ButtonReflesh.Focus()
+        Me.ButtonReflesh.PerformClick()
+
       ' F9キー押下時
       Case Keys.F9
         ' 印刷ボタン押下処理
@@ -1789,6 +1796,19 @@ Public Class Form_Ryo
 
   End Sub
 
+  Private Overloads Sub BaseForm_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
+    'Control+Rの時再表示を行う
+    If (e.Modifiers And Keys.Control) = Keys.Control And e.KeyCode = Keys.R Then
+      DataGrid_ShowList()
+    End If
+  End Sub
+
+  Private Sub BtnReflesh_Click(sender As Object, e As EventArgs) Handles ButtonReflesh.Click
+    DataGrid_ShowList()
+  End Sub
+
+
+
   ''' <summary>
   ''' 画面再表示時処理
   ''' </summary>
@@ -1807,6 +1827,9 @@ Public Class Form_Ryo
     ' 得意先名のコンボボックスを先頭に設定
     CmbMstCustomer_01.SelectedIndex = -1
 
+    CHK_P.Checked = True
+
+    updateWorkTableRyoMoku()
   End Sub
 #End Region
 

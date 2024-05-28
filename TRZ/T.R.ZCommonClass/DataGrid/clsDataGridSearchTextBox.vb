@@ -6,11 +6,6 @@
 #Region "プライベート"
   Private WithEvents mTxt As TextBox
 
-  ''' <summary>
-  ''' 最終入力テキスト
-  ''' </summary>
-  Private _LastText As String
-
 #End Region
 
 #End Region

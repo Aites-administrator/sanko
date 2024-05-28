@@ -37,7 +37,7 @@
   'Public Shared ReadOnly PCA_API_VERSION As String = 800
   Public Shared ReadOnly PCAAPI_USERID As String = "aites"
   Public Shared ReadOnly PCAAPI_PASSWORD As String = "495344"
-  Public Shared ReadOnly PCAAPI_DATAAREANAME As String = "P20V01C001KON0018"
+  Public Shared ReadOnly PCAAPI_DATAAREANAME As String = "P20V01C001KON0002"
   Public Shared ReadOnly PCAAPI_PG_NAME As String = "API操作共通プログラム"
   Public Shared ReadOnly PCAAPI_PG_ID As String = "ComApiMn"
   Public Shared ReadOnly PCA_API_VERSION As String = 800

@@ -124,6 +124,9 @@
     <Compile Include="Button\ButtonCancel.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Button\ButtonReflesh.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Button\ButtoSyuka.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -140,6 +143,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\CmbBase.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComboBox\CmbSayu.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComboBox\CmbDateBase.vb">
@@ -467,6 +473,8 @@
     <None Include="Resources\ButtonSyuka.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="My Project\BtnReflesh.png" />
+    <Content Include="Resources\BtnReflesh.png" />
     <Content Include="Resources\ButtonCancelS.png" />
     <Content Include="Resources\ButtonEndS.png" />
   </ItemGroup>
