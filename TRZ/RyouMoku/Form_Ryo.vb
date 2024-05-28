@@ -540,6 +540,7 @@ Public Class Form_Ryo
     '結果を表示する 
     Console.WriteLine(sw.Elapsed)
 
+    DG2V1.Focus()
   End Sub
 
   ''' <summary>
@@ -1824,12 +1825,13 @@ Public Class Form_Ryo
 
     ' 得意先名のコンボボックスを更新
     CmbMstCustomer_01.InitCmb()
-    ' 得意先名のコンボボックスを先頭に設定
+    ' 得意先名のコンボボックスを未選択に設定
     CmbMstCustomer_01.SelectedIndex = -1
 
     CHK_P.Checked = True
 
     updateWorkTableRyoMoku()
+
   End Sub
 #End Region
 
