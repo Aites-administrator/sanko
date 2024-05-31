@@ -164,13 +164,13 @@ Public Class OutCsvData
 
     sql &= " Select "
     sql &= GetColumnValue(tmpDt, ITEM_CODE)
-    sql &= "," & GetColumnValue(tmpDt, JURYO)
-    sql &= "," & GetColumnValue(tmpDt, SEIZOUBI)
-    sql &= "," & GetColumnValue(tmpDt, CARTONID)
-    sql &= "," & GetColumnValue(tmpDt, KOTAINO)
-    sql &= "," & GetColumnValue(tmpDt, EDABAN)
-    sql &= "," & GetColumnValue(tmpDt, LOTNO)
-    sql &= "," & GetColumnValue(tmpDt, CUTKIKAKUNO)
+    sql &= GetColumnValue(tmpDt, JURYO)
+    sql &= GetColumnValue(tmpDt, SEIZOUBI)
+    sql &= GetColumnValue(tmpDt, CARTONID)
+    sql &= GetColumnValue(tmpDt, KOTAINO)
+    sql &= GetColumnValue(tmpDt, EDABAN)
+    sql &= GetColumnValue(tmpDt, LOTNO)
+    sql &= GetColumnValue(tmpDt, CUTKIKAKUNO)
     '結合テーブル設定
     sql &= GetTableValue()
     sql &= " where (CUTJ.KUBUN = 1 "
@@ -347,6 +347,15 @@ Public Class OutCsvData
 
     tmpDtRows = prmDt.Select("CSV_COLUMN = '" & ColumnName & "'")
 
+    If tmpDtRows(0).Item("DISP_SETTING").ToString = "0" Then
+      Return sql
+    End If
+
+    If tmpDtRows(0).Item("DISP_ORDER").ToString <> "1" Then
+      sql += ","
+    End If
+
+
     For Each tmpRow In tmpDtRows
       If tmpRow("STRING_KUBUN") = 1 Then
         sql += "+ '" & tmpRow("COLUMN_NAME") & "'"
@@ -361,7 +370,7 @@ Public Class OutCsvData
         Else
           sql += "+ FORMAT(" & tmpRow("TABLE_NAME") & "." & tmpRow("COLUMN_NAME") & ", REPLICATE('" & tmpRow("COLUMN_FORMAT") & "'," & tmpRow("COLUMN_LENGTH") & ")))"
         End If
-        End If
+      End If
 
     Next
 
@@ -526,11 +535,15 @@ Public Class OutCsvData
     sql &= " ,	 COLUMN_FORMAT "
     sql &= " ,	 STRING_KUBUN "
     sql &= " ,	 TABLE_NAME "
+    sql &= " ,	 DISP_SETTING "
+    sql &= " ,	 DISP_ORDER "
     sql &= " FROM	COLUMN_DETAIL_TBL "
     sql &= " LEFT JOIN FIXED_COLUMN_TBL "
     sql &= " ON COLUMN_DETAIL_TBL.CUT_COLUMN = FIXED_COLUMN_TBL.COLUMN_NAME "
     sql &= " LEFT JOIN MST_TABLE "
     sql &= " ON MST_TABLE.TABLE_ID = COLUMN_DETAIL_TBL.TABLE_ID "
+    sql &= " LEFT JOIN COLUMN_SETTING_TBL "
+    sql &= " ON COLUMN_SETTING_TBL.COLUMN_NAME = COLUMN_DETAIL_TBL.CSV_COLUMN "
     sql &= " ORDER BY COLUMN_DETAIL_TBL.CSV_COLUMN,JOIN_ORDER "
 
     Console.WriteLine(sql)

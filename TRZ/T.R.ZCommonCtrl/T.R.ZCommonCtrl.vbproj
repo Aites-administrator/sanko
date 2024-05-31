@@ -477,6 +477,7 @@
     <Content Include="Resources\BtnReflesh.png" />
     <Content Include="Resources\ButtonCancelS.png" />
     <Content Include="Resources\ButtonEndS.png" />
+    <None Include="Resources\ButtonReflesh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

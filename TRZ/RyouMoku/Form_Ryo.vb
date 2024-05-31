@@ -459,6 +459,44 @@ Public Class Form_Ryo
 #Region "プライベート"
 
   ''' <summary>
+  ''' グリッドを最新状態にする
+  ''' </summary>
+  Private Sub RefleshGrid()
+    Call InitSelectCmb(Me.CmbDateShukaBi_01.Text, Me.CmbMstCustomer_01.Text)
+    DataGrid_ShowList()
+    DG2V1.Focus()
+  End Sub
+
+  ''' <summary>
+  ''' 検索コンボボックス初期化
+  ''' </summary>
+  ''' <param name="prmSyukabiText"></param>
+  ''' <param name="prmCustomerText"></param>
+  Private Sub InitSelectCmb(Optional prmSyukabiText As String = Nothing _
+                          , Optional prmCustomerText As String = Nothing)
+
+    flgInit = False
+
+    ' 出荷日のコンボボックスを更新
+    Me.CmbDateShukaBi_01.InitCmb()
+    ' 出荷日のコンボボックスの選択状態を設定
+    If CmbDateShukaBi_01.FindStringExact(prmSyukabiText) = -1 Then
+      CmbDateShukaBi_01.SelectedIndex = 0
+    Else
+      CmbDateShukaBi_01.SelectedIndex = CmbDateShukaBi_01.FindStringExact(prmSyukabiText)
+    End If
+
+    ' 得意先名のコンボボックスを更新
+    CmbMstCustomer_01.InitCmb()
+    ' 得意先名のコンボボックスの選択状態を設定
+    CmbMstCustomer_01.SelectedIndex = CmbMstCustomer_01.FindStringExact(prmCustomerText)
+
+    flgInit = True
+  End Sub
+
+
+
+  ''' <summary>
   ''' Object型から整数型への変換
   ''' </summary>
   ''' <param name="prmTargetObj"></param>
@@ -540,7 +578,6 @@ Public Class Form_Ryo
     '結果を表示する 
     Console.WriteLine(sw.Elapsed)
 
-    DG2V1.Focus()
   End Sub
 
   ''' <summary>
@@ -1564,7 +1601,6 @@ Public Class Form_Ryo
       Case Keys.F5
         Me.ButtonReflesh.Focus()
         Me.ButtonReflesh.PerformClick()
-
       ' F9キー押下時
       Case Keys.F9
         ' 印刷ボタン押下処理
@@ -1684,23 +1720,12 @@ Public Class Form_Ryo
   Private Sub ButtonEnd_Click(sender As Object, e As EventArgs) Handles ButtonEnd.Click
 
     ' 自動検索OFF
+    flgInit = False
     Controlz(DG2V1.Name).AutoSearch = False
     Controlz(DG2V1.Name).ResetPosition()
 
     MyBase.AllClear()
     Controlz(DG2V1.Name).InitSort()
-
-    ' 出荷日のコンボボックスを更新
-    CmbDateShukaBi_01.InitCmb()
-
-    ' 出荷日のコンボボックスを先頭に設定
-    CmbDateShukaBi_01.SelectedIndex = 0
-
-    ' 得意先名のコンボボックスを更新
-    CmbMstCustomer_01.InitCmb()
-
-    ' 得意先名のコンボボックスを先頭に設定
-    CmbMstCustomer_01.SelectedIndex = -1
 
     ' 未発行のみチェック済
     CHK_P.Checked = True
@@ -1800,12 +1825,12 @@ Public Class Form_Ryo
   Private Overloads Sub BaseForm_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs) Handles MyBase.KeyDown
     'Control+Rの時再表示を行う
     If (e.Modifiers And Keys.Control) = Keys.Control And e.KeyCode = Keys.R Then
-      DataGrid_ShowList()
+      Call RefleshGrid()
     End If
   End Sub
 
   Private Sub BtnReflesh_Click(sender As Object, e As EventArgs) Handles ButtonReflesh.Click
-    DataGrid_ShowList()
+    Call RefleshGrid()
   End Sub
 
 
@@ -1818,19 +1843,12 @@ Public Class Form_Ryo
   ''' FormLoad時に設定
   ''' </remarks>
   Private Sub ReStartPrg()
-    ' 出荷日のコンボボックスを更新
-    Me.CmbDateShukaBi_01.InitCmb()
-    ' 出荷日のコンボボックスを先頭に設定
-    CmbDateShukaBi_01.SelectedIndex = 0
-
-    ' 得意先名のコンボボックスを更新
-    CmbMstCustomer_01.InitCmb()
-    ' 得意先名のコンボボックスを未選択に設定
-    CmbMstCustomer_01.SelectedIndex = -1
+    ' 検索コンボボックス初期化
+    Call InitSelectCmb()
 
     CHK_P.Checked = True
 
-    updateWorkTableRyoMoku()
+    DataGrid_ShowList()
 
   End Sub
 #End Region
