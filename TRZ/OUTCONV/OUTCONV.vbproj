@@ -101,6 +101,14 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonPcaDx, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXE\CommonPcaDx.dll</HintPath>
+    </Reference>
+    <Reference Include="IpcService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXE\IpcService.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -112,6 +120,14 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="T.R.ZCommonClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXE\T.R.ZCommonClass.dll</HintPath>
+    </Reference>
+    <Reference Include="T.R.ZCommonCtrl, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\EXE\T.R.ZCommonCtrl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -131,15 +147,11 @@
     <Compile Include="Form_OutConv.Designer.vb">
       <DependentUpon>Form_OutConv.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form_OutConv.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form_OutConv.vb" />
     <Compile Include="Form_OutConvLog.Designer.vb">
       <DependentUpon>Form_OutConvLog.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form_OutConvLog.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form_OutConvLog.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -183,25 +195,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonPcaDx\CommonPcaDx.vbproj">
-      <Project>{440988c9-917f-40be-a601-98b21648d022}</Project>
-      <Name>CommonPcaDx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IpcService\IpcService.vbproj">
-      <Project>{0CEF3710-7F88-46ED-A0D3-E6D6FF778F1D}</Project>
-      <Name>IpcService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\T.R.ZCommonClass\T.R.ZCommonClass.vbproj">
-      <Project>{b555bcbf-591c-4bd1-95d1-53ab1771eea5}</Project>
-      <Name>T.R.ZCommonClass</Name>
-    </ProjectReference>
     <ProjectReference Include="..\T.R.ZCommonCon\T.R.ZCommonCon.vbproj">
       <Project>{1e1b85f1-87d2-4f40-ba16-c3621c8644a0}</Project>
       <Name>T.R.ZCommonCon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\T.R.ZCommonCtrl\T.R.ZCommonCtrl.vbproj">
-      <Project>{f38c221b-17e9-4ab3-8fda-658a1e265d4f}</Project>
-      <Name>T.R.ZCommonCtrl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

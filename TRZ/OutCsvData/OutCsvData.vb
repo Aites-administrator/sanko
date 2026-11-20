@@ -272,7 +272,7 @@ Public Class OutCsvData
     Dim BackUpFolderName As String = "..\keiryo_csv"
     Dim BackUpFileName As String = BackUpFolderName & "\keiryo_data_" & tmpDate & ".csv"
     Dim SendFolderName As String = GetRemovable() & "SendData"
-    Dim SendFileName As String = SendFolderName & "\送信データ.csv"
+    Dim SendFileName As String = SendFolderName & "\keiryo_data_" & tmpDate & ".csv"
 
     'OutCsv(Controlz(DG2V1.Name).GetAllData(), BackUpFileName, True)
     'System.Diagnostics.Process.Start(

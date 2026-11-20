@@ -92,10 +92,10 @@
       <HintPath>C:\Program Files\PCA\Shared\PCA.ApplicationIntegration.dll</HintPath>
     </Reference>
     <Reference Include="PCA.BaseFramework">
-      <HintPath>C:\Program Files (x86)\PCAOFC\Kon20PublicAPI\Bin\PCA.BaseFramework.dll</HintPath>
+      <HintPath>..\EXE\PCA.BaseFramework.dll</HintPath>
     </Reference>
     <Reference Include="PCA.Kon.Integration">
-      <HintPath>C:\Program Files (x86)\PCAOFC\Kon20PublicAPI\Bin\PCA.Kon.Integration.dll</HintPath>
+      <HintPath>..\EXE\PCA.Kon.Integration.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

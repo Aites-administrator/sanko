@@ -35,9 +35,10 @@
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\EXE\</OutputPath>
     <DocumentationFile>TANASIJI.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -105,9 +106,7 @@
     <Compile Include="Form_Tanasiji.Designer.vb">
       <DependentUpon>Form_Tanasiji.vb</DependentUpon>
     </Compile>
-    <Compile Include="Form_Tanasiji.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form_Tanasiji.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

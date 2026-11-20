@@ -67,7 +67,7 @@ Public Class MFBaseDgv
     For Each tmpDgvName In Controlz.Keys
       Controlz(tmpDgvName).ClearSearchCondition(prmExclusionControls)
     Next
-    MyBase.AllClear()
+    MyBase.AllClear(prmExclusionControls)
   End Sub
 
 #End Region
